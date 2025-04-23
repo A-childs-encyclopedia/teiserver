@@ -35,6 +35,7 @@
     Chat
   </.menu_card>
 
+<<<<<<< HEAD
   <.menu_card
     :if={allow_any?(@current_user, ~w(Contributor Overwatch))}
     icon={Teiserver.Helper.StylingHelper.icon(:summary)}
@@ -43,6 +44,97 @@
   >
     Reports
   </.menu_card>
+=======
+  <%= if allow?(@conn, "Reviewer") do %>
+    <%= central_component("menu_card",
+      icon: Teiserver.Chat.LobbyMessageLib.icon(),
+      name: "chat",
+      text: "Chat",
+      icon_class: "fa-duotone",
+      link: ~p"/teiserver/admin/chat"
+    ) %>
+  <% end %>
+
+  <%= if allow?(@conn, "Reviewer") do %>
+    <%= central_component("menu_card",
+      icon: Teiserver.Battle.MatchLib.icon(),
+      name: "matches",
+      text: "Matches",
+      icon_class: "fa-duotone",
+      link: Routes.ts_admin_match_path(@conn, :index)
+    ) %>
+  <% end %>
+
+  <%= if allow?(@conn, "Admin") do %>
+    <%= central_component("menu_card",
+      icon: Teiserver.Clans.ClanLib.icon(),
+      name: "clan",
+      text: "Clans",
+      icon_class: "fa-duotone",
+      link: Routes.ts_admin_clan_path(@conn, :index)
+    ) %>
+  <% end %>
+
+  <%= if allow?(@conn, "Server") do %>
+    <%= central_component("menu_card",
+      icon: Teiserver.Game.QueueLib.icon(),
+      name: "matchmaking",
+      text: "Matchmaking",
+      icon_class: "fa-duotone",
+      link: Routes.ts_game_queue_path(@conn, :index)
+    ) %>
+  <% end %>
+
+  <%= if allow_any?(@conn, ~w(Contributor Overwatch)) do %>
+    <%= central_component("menu_card",
+      icon: Teiserver.Game.LobbyPolicyLib.icon(),
+      name: "lobby_policies",
+      text: "Lobby policies",
+      icon_class: "fa-duotone",
+      link: ~p"/admin/lobby_policies"
+    ) %>
+  <% end %>
+
+  <%= if allow_any?(@conn, ~w(Moderator Reviewer Overwatch)) do %>
+    <%= central_component("menu_card",
+      icon: Teiserver.Moderation.ReportLib.icon(),
+      name: "moderation_admin",
+      text: "Moderation",
+      icon_class: "fa-duotone",
+      link: Routes.moderation_general_path(@conn, :index)
+    ) %>
+  <% end %>
+
+  <%= if allow?(@conn, "Moderator") do %>
+    <%= central_component("menu_card",
+      icon: Teiserver.Game.AchievementTypeLib.icon(),
+      name: "achievements",
+      text: "Achievements",
+      icon_class: "fa-duotone",
+      link: Routes.ts_admin_achievement_path(@conn, :index)
+    ) %>
+  <% end %>
+
+  <%= if allow?(@conn, "Admin") do %>
+    <%= central_component("menu_card",
+      icon_class: "fa-solid",
+      name: "",
+      icon: Teiserver.Account.BadgeTypeLib.icon(),
+      text: "Badge types",
+      link: Routes.ts_admin_badge_type_path(@conn, :index)
+    ) %>
+  <% end %>
+
+  <%= if allow_any?(@conn, ~w(Contributor Overwatch)) do %>
+    <%= central_component("menu_card",
+      icon: Teiserver.Communication.TextCallbackLib.icon(),
+      name: "text_callbacks",
+      text: "Text callbacks",
+      icon_class: "fa-duotone",
+      link: ~p"/admin/text_callbacks"
+    ) %>
+  <% end %>
+>>>>>>> parent of bce7e6b2b (Removed clan pages)
 </div>
 
 <div class="row">
