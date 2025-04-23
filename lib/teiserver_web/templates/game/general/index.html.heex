@@ -6,7 +6,31 @@
       text: "User admin",
       icon_class: "fa-solid",
       link: ~p"/teiserver/admin/user"
+<<<<<<< HEAD
     )}
+=======
+    ) %>
+  <% end %>
+
+  <%= if allow?(@conn, "Admin") do %>
+    <%= central_component("menu_card",
+      icon: Teiserver.Clans.ClanLib.icon(),
+      name: "clan_admin",
+      text: "Clan admin",
+      icon_class: "fa-duotone",
+      link: Routes.ts_admin_clan_path(@conn, :index)
+    ) %>
+  <% end %>
+
+  <%= if allow?(@conn, "Moderator") do %>
+    <%= central_component("menu_card",
+      icon: Teiserver.Game.QueueLib.icon(),
+      name: "queue",
+      text: "Queues",
+      icon_class: "fa-duotone",
+      link: Routes.ts_game_queue_path(@conn, :index)
+    ) %>
+>>>>>>> parent of bce7e6b2b (Removed clan pages)
   <% end %>
 
   <%= if allow?(@conn, "Admin") do %>
